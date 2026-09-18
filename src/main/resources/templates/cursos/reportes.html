@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reportes de Cursos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark px-4">
+    <a th:href="@{/home}" class="navbar-brand mb-0 h1">Gestión de Cursos</a>
+</nav>
+
+<div class="container mt-4">
+    <h3>Reportes parametrizados - Cursos</h3>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form th:action="@{/cursos/reportes}" method="get" class="border rounded p-3 mb-3">
+                <h6>Reporte 1: por nivel</h6>
+                <div class="input-group">
+                    <select name="nivel" class="form-select">
+                        <option value="Basico">Básico</option>
+                        <option value="Intermedio">Intermedio</option>
+                        <option value="Avanzado">Avanzado</option>
+                    </select>
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form th:action="@{/cursos/reportes}" method="get" class="border rounded p-3 mb-3">
+                <h6>Reporte 2: por modalidad</h6>
+                <div class="input-group">
+                    <select name="modalidad" class="form-select">
+                        <option value="Virtual">Virtual</option>
+                        <option value="Presencial">Presencial</option>
+                        <option value="Mixta">Mixta</option>
+                    </select>
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <form th:action="@{/cursos/reportes}" method="get" class="border rounded p-3 mb-3">
+                <h6>Reporte 3: precio máximo</h6>
+                <div class="input-group">
+                    <input type="number" step="0.01" name="precioMaximo" class="form-control" placeholder="Ej: 200000">
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div th:if="${filtroUsado}" class="alert alert-info" th:text="'Filtro aplicado -> ' + ${filtroUsado}"></div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered" th:if="${resultados}">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Nivel</th>
+                <th>Modalidad</th>
+                <th>Precio</th>
+                <th>Profesor</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c : ${resultados}">
+                <td th:text="${c.id}"></td>
+                <td th:text="${c.nombre}"></td>
+                <td th:text="${c.nivel}"></td>
+                <td th:text="${c.modalidad}"></td>
+                <td th:text="${c.precio}"></td>
+                <td th:text="${c.profesor}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <a th:href="@{/home}" class="btn btn-secondary btn-sm">Volver al menú</a>
+</div>
+</body>
+</html>

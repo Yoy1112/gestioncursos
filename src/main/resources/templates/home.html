@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio - Gestión de Cursos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark px-4">
+    <span class="navbar-brand mb-0 h1">Gestión de Cursos</span>
+    <a th:href="@{/logout}" class="btn btn-outline-light btn-sm">Cerrar sesión</a>
+</nav>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Menú principal</h2>
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Usuarios</h5>
+                    <p class="card-text text-muted">CRUD de usuarios del sistema.</p>
+                    <a th:href="@{/usuarios}" class="btn btn-primary btn-sm">Listar / gestionar</a>
+                    <a th:href="@{/usuarios/reportes}" class="btn btn-outline-secondary btn-sm">Reportes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Cursos</h5>
+                    <p class="card-text text-muted">CRUD de cursos (ejercicio 28).</p>
+                    <a th:href="@{/cursos}" class="btn btn-primary btn-sm">Listar / gestionar</a>
+                    <a th:href="@{/cursos/reportes}" class="btn btn-outline-secondary btn-sm">Reportes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
